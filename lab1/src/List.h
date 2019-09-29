@@ -9,11 +9,6 @@ public:
     ~List();
 
     /**
-     * insert first element with @param data
-     */
-    void add_first(int data);
-
-    /**
      * insert element with @param data into back of list
      */
     void push_back(int data);
@@ -75,9 +70,19 @@ public:
      */
     bool isEmpty();
 
+    /**
+     * insert list in another list;
+     * @return bool
+     */
+    void push_front(List list);
+
 private:
-    int size;
+    int size = 0;
     EL1 *head = nullptr;
     EL1 *tail = nullptr;
 
+    /**
+     * insert first element with @param data
+     */
+    void add_first(int data);
 };

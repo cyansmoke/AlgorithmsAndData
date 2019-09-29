@@ -7,7 +7,6 @@ EL1::EL1(int data) : data(data) {
 EL1::~EL1() {
     this->data = -1;
     this->set_next(nullptr);
-    delete(this);
 }
 
 int EL1::get_data(){
