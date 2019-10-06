@@ -1,6 +1,6 @@
 #include "List.h"
 
-List::List() {}
+List::List()= default;
 
 List::~List() {
     head = nullptr;
@@ -9,9 +9,9 @@ List::~List() {
 }
 
 void List::add_first(int data) {
-    EL1 *el1 = new EL1(data);
-    head = el1;
-    tail = el1;
+    Node *node = new Node(data);
+    head = node;
+    tail = node;
     size++;
 };
 
@@ -19,9 +19,9 @@ void List::push_back(int data) {
     if (size == 0) {
         add_first(data);
     } else {
-        EL1 *el = new EL1(data);
-        tail->set_next(el);
-        tail = el;
+        Node *node = new Node(data);
+        tail->set_next(node);
+        tail = node;
         size++;
     }
 }
@@ -30,19 +30,19 @@ void List::push_front(int data) {
     if (size == 0) {
         add_first(data);
     } else {
-        EL1 *el = new EL1(data);
-        el->set_next(head);
-        head = el;
+        Node *node = new Node(data);
+        node->set_next(head);
+        head = node;
         size++;
     }
 }
 
 void List::pop_back() {
-    EL1 *current = head;
+    Node *current = head;
     while (current->get_next() != tail) {
         current = current->get_next();
     }
-    current->get_next()->~EL1();
+    current->get_next()->~Node();
     delete (current->get_next());
     tail = current;
     tail->set_next(nullptr);
@@ -50,37 +50,37 @@ void List::pop_back() {
 }
 
 void List::pop_front() {
-    EL1 *current = head->get_next();
-    head->~EL1();
+    Node *current = head->get_next();
+    head->~Node();
     delete (head);
     head = current;
     size--;
 }
 
 void List::insert(int data, size_t position) {
-    if (position == 0) {
-        push_front(data);
-    } else if (position == size - 1) {
+    if (position > size || position < 0) {
+        throw "Out of bounds";
+    } else if (position == size) {
         push_back(data);
-    } else if (position >= size || position < 0) {
-        //TODO(throw except)
+    } else if (position == 0) {
+        push_front(data);
     } else {
-        EL1 *current = head;
+        Node *current = head;
         for (; position > 1; position--) {
             current = current->get_next();
         }
-        EL1 *el = new EL1(data);
-        el->set_next(current->get_next());
-        current->set_next(el);
+        Node *node = new Node(data);
+        node->set_next(current->get_next());
+        current->set_next(node);
         size++;
     }
 }
 
 int List::at(size_t position) {
     if (position >= size || position < 0) {
-        //TODO(throw except)
+        throw "Out of bounds";
     }
-    EL1 *current = head;
+    Node *current = head;
     for (; position > 0; position--) {
         current = current->get_next();
     }
@@ -89,21 +89,21 @@ int List::at(size_t position) {
 
 void List::remove(size_t position) {
     if (position >= size || position < 0) {
-        //TODO(throw except)
+        throw "Out of bounds";
     } else if (position == 0) {
         pop_front();
     } else if (position == size - 1) {
         pop_back();
     } else {
-        EL1 *current = head;
+        Node *current = head;
         for (; position > 1; position--) {
             current = current->get_next();
         }
 
-        EL1 *prev = current;
+        Node *prev = current;
         current = current->get_next();
         prev->set_next(current->get_next());
-        current->~EL1();
+        current->~Node();
         delete (current);
         size--;
     }
@@ -114,7 +114,7 @@ size_t List::get_size() {
 }
 
 void List::print_to_console() {
-    EL1 *current = head;
+    Node *current = head;
     using namespace std;
     if (!isEmpty()) {
         cout << "[";
@@ -132,8 +132,8 @@ void List::print_to_console() {
 void List::clear() {
     if (!isEmpty()) {
         do {
-            EL1 *temp = head->get_next();
-            head->~EL1();
+            Node *temp = head->get_next();
+            head->~Node();
             delete (head);
             head = temp;
         } while (head != nullptr);
@@ -144,9 +144,9 @@ void List::clear() {
 
 void List::set(size_t position, int data) {
     if (position >= size || position < 0) {
-        //TODO(throw except)
+        throw "Out of bounds";
     }
-    EL1 *current = head;
+    Node *current = head;
     for (; position > 0; position--) {
         current = current->get_next();
     }
@@ -160,6 +160,5 @@ bool List::isEmpty() {
 void List::push_front(List list) {
     list.tail->set_next(head);
     head = list.head;
-    list.tail = tail;
-    size = list.size + size;
+    size=+list.size;
 }

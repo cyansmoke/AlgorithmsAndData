@@ -1,6 +1,6 @@
 #pragma once
 
-#include "EL1.h"
+#include "Node.h"
 
 class List {
 public:
@@ -78,8 +78,8 @@ public:
 
 private:
     int size = 0;
-    EL1 *head = nullptr;
-    EL1 *tail = nullptr;
+    Node *head = nullptr;
+    Node *tail = nullptr;
 
     /**
      * insert first element with @param data

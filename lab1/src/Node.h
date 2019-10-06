@@ -1,11 +1,11 @@
 #pragma once
 
-class EL1 {
+class Node {
 
 public:
-    EL1(int data);
+    Node(int data);
 
-    ~EL1();
+    ~Node();
 
     /**
      * @return int data of element
@@ -20,14 +20,14 @@ public:
     /**
      * @return next element
      */
-    EL1* get_next();
+    Node* get_next();
 
     /**
      * set next element
      */
-    void set_next(EL1* next);
+    void set_next(Node* next);
 
 private:
     int data;
-    EL1* next = nullptr;
+    Node* next = nullptr;
 };

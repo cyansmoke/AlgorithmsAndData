@@ -1,27 +1,27 @@
-#include "EL1.h"
+#include "Node.h"
 
-EL1::EL1(int data) : data(data) {
+Node::Node(int data) : data(data) {
     this->set_data(data);
 }
 
-EL1::~EL1() {
+Node::~Node() {
     this->data = -1;
     this->set_next(nullptr);
 }
 
-int EL1::get_data(){
+int Node::get_data(){
     return this->data;
 }
 
-void EL1::set_data(int data) {
+void Node::set_data(int data) {
     this->data = data;
 }
 
-EL1* EL1::get_next() {
+Node* Node::get_next() {
     return this->next;
 }
 
-void EL1::set_next(EL1* next) {
+void Node::set_next(Node* next) {
     this->next = next;
 }
 
