@@ -160,5 +160,5 @@ bool List::isEmpty() {
 void List::push_front(List list) {
     list.tail->set_next(head);
     head = list.head;
-    size=+list.size;
+    size = size + list.size;
 }
