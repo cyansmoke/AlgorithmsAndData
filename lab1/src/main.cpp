@@ -20,4 +20,8 @@ int main() {
     for (int i = list1.get_size(); i > 0; i--) {
         cout << list1.at(i - 1);
     }
+
+    list1.print_to_console();
+
+    return 0;
 }

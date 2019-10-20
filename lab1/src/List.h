@@ -31,17 +31,17 @@ public:
     /**
      * insert element at @param position with @param data
      */
-    void insert(int data, size_t position);
+    void insert(int data, int position);
 
     /**
      * get element at @param position
      */
-    int at(size_t position);
+    int at(int position);
 
     /**
      * delete element at @param position
      */
-    void remove(size_t position);
+    void remove(int position);
 
     /**
      * get size of list
@@ -62,7 +62,7 @@ public:
     /**
      * set data of element at @param position to @param data
      */
-    void set(size_t position, int data);
+    void set(int position, int data);
 
     /**
      * check is list empty

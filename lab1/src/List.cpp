@@ -1,11 +1,9 @@
 #include "List.h"
 
-List::List()= default;
+List::List() = default;
 
 List::~List() {
-    head = nullptr;
-    tail = nullptr;
-    size = 0;
+    clear();
 }
 
 void List::add_first(int data) {
@@ -57,7 +55,7 @@ void List::pop_front() {
     size--;
 }
 
-void List::insert(int data, size_t position) {
+void List::insert(int data, int position) {
     if (position > size || position < 0) {
         throw "Out of bounds";
     } else if (position == size) {
@@ -76,7 +74,7 @@ void List::insert(int data, size_t position) {
     }
 }
 
-int List::at(size_t position) {
+int List::at(int position) {
     if (position >= size || position < 0) {
         throw "Out of bounds";
     }
@@ -87,7 +85,7 @@ int List::at(size_t position) {
     return current->get_data();
 }
 
-void List::remove(size_t position) {
+void List::remove(int position) {
     if (position >= size || position < 0) {
         throw "Out of bounds";
     } else if (position == 0) {
@@ -142,7 +140,7 @@ void List::clear() {
     }
 }
 
-void List::set(size_t position, int data) {
+void List::set(int position, int data) {
     if (position >= size || position < 0) {
         throw "Out of bounds";
     }
@@ -158,7 +156,8 @@ bool List::isEmpty() {
 }
 
 void List::push_front(List list) {
-    list.tail->set_next(head);
-    head = list.head;
-    size = size + list.size;
+    if (list.isEmpty()) throw "List is empty";
+    for (int i = list.size - 1; i >= 0; i--) {
+        this->push_front(list.at(i));
+    }
 }
