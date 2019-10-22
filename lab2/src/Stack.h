@@ -3,24 +3,22 @@
 
 #include "Node.h"
 
-template <typename T>
+template<typename T>
 class Stack {
-
 private:
     int size = 0;
-    Node<T> *top;
+    Node<T> *top = nullptr;
 
 public:
-
     /**
      * constructor
      */
-    Stack();
+    Stack<T>();
 
     /**
      * destructor
      */
-    ~Stack();
+    ~Stack<T>();
 
     /**
      * add element with @param data to stack
@@ -31,12 +29,12 @@ public:
      * remove top element
      * @return this element
      */
-    T pop();
+    Node<T>* pop();
 
     /**
      * return top element
      */
-    T peek();
+    Node<T>* peek();
 
     /**
      * return size of stack
