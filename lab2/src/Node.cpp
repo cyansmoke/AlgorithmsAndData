@@ -1,7 +1,7 @@
 #include "Node.h"
-template<typename T>
 
-Node<T>::Node(T data) : data(data) {
+template<typename T>
+Node<T>::Node(T data){
     this->set_data(data);
 }
 

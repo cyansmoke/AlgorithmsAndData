@@ -21,6 +21,7 @@ void Stack<T>::push(T data) {
 
 template<typename T>
 Node<T> *Stack<T>::pop() {
+    if(size == 0) throw "Stack is empty";
     Node<T> *temp = top;
     top = top->get_next();
     size--;
@@ -29,6 +30,7 @@ Node<T> *Stack<T>::pop() {
 
 template<typename T>
 Node<T> *Stack<T>::peek() {
+    if(size == 0) throw "Stack is empty";
     return top;
 }
 

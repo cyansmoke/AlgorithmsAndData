@@ -1,6 +1,5 @@
 #ifndef LAB2_STACK_H
 #define LAB2_STACK_H
-
 #include "Node.h"
 
 template<typename T>
@@ -8,7 +7,6 @@ class Stack {
 private:
     int size = 0;
     Node<T> *top = nullptr;
-
 public:
     /**
      * constructor

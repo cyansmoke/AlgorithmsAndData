@@ -1,5 +1,4 @@
 #include <iostream>
-#include "Stack.h"
 #include "Node.cpp"
 #include "Stack.cpp"
 
@@ -14,8 +13,10 @@ int main() {
     stack.push('1');
 
     cout << stack.pop()->get_data() << endl;
-    cout << stack.pop()->get_data() << endl;
-    cout << stack.pop()->get_data() << endl;
+    cout << stack.peek()->get_data() << endl;
+    stack.pop();
+    cout << stack.pop()->get_data()<< endl;
+    cout << stack.get_size() << endl;
 
     return 0;
 }
