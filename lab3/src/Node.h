@@ -48,8 +48,14 @@ public:
      */
     Node *get_right();
 
+    /**
+     * @return height of element
+     */
     int get_height();
 
+    /**
+     * set_height of element
+     */
     void set_height(int);
 };
 
