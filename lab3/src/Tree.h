@@ -1,13 +1,12 @@
 #ifndef LAB3_TREE_H
 #define LAB3_TREE_H
 
-#include "Node.cpp"
-#include "TreeIterator.cpp"
+#include "Node.h"
 
 class Tree {
 
 private:
-    Node *root = nullptr;
+    Node *root = NULL;
 public:
 
     Tree(int root_data);
@@ -23,12 +22,12 @@ public:
     /**
     * add element with data into tree
     */
-    void insert(int);
+    void insert_node(int);
 
     /**
     * remove element with data
     */
-    void remove(int);
+    void remove_node(int);
 
     /**
     * check contains element with data

@@ -1,20 +1,31 @@
 #include "Node.h"
 
 Node::Node(int data) {
-    this->set_data(data);
+    this->set_key(data);
+    this->set_left(NULL);
+    this->set_right(NULL);
+    this->set_height(1);
 }
 
 Node::~Node() {
-    this->set_left(nullptr);
-    this->set_right(nullptr);
+    this->set_left(NULL);
+    this->set_right(NULL);
 }
 
-int Node::get_data() {
-    return this->data;
+int Node::get_height(){
+    return this->height;
 }
 
-void Node::set_data(int data) {
-    this->data = data;
+void Node::set_height(int height){
+    this->height = height;
+}
+
+int Node::get_key() {
+    return this->key;
+}
+
+void Node::set_key(int key) {
+    this->key = key;
 }
 
 Node *Node::get_left() {

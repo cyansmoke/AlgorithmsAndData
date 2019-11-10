@@ -3,9 +3,10 @@
 
 class Node {
 private:
-    int data;
-    Node *left = nullptr;
-    Node *right = nullptr;
+    Node *left = 0;
+    Node *right = 0;
+    int height = 1;
+    int key = 0;
 public:
     /**
      * constructor
@@ -20,7 +21,7 @@ public:
     /**
      * return data of element
      */
-    int get_data();
+    int get_key();
 
     /**
     * set left element
@@ -35,7 +36,7 @@ public:
     /**
     * set data of element
     */
-    void set_data(int data);
+    void set_key(int key);
 
     /**
      * @return pointer to left element
@@ -46,6 +47,10 @@ public:
      * @return pointer to right element
      */
     Node *get_right();
+
+    int get_height();
+
+    void set_height(int);
 };
 
 
