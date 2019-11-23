@@ -1,8 +1,8 @@
 #include "gtest/gtest.h"
-#include "../src/queue/Queue.cpp"
+#include "../src/queue/Queue.h"
 
 TEST(Queue_test, queue_alltest) {
-    Queue queue;
+    Queue<int> queue;
 
     queue.enqueue(10);
 

@@ -1,9 +1,11 @@
 #ifndef LAB3_TREE_H
 #define LAB3_TREE_H
 
-#include "Node.h"
 #include "iterators/TreeDftIterator.h"
+#include "iterators/TreeBftIterator.h"
+#include "Node.h"
 #include "print/Trunk.h"
+
 
 class Tree {
 
@@ -40,7 +42,7 @@ public:
     * check contains element with data
     * @return true if contains else false
     */
-//    Iterator create_bft_iterator();
+    TreeBftIterator create_bft_iterator();
 
     /**
     * check contains element with data

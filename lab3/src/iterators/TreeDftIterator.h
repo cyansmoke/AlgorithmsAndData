@@ -12,13 +12,13 @@ public:
 
     ~TreeDftIterator();
 
-    int next() override;
+    Node* next() override;
 
     bool has_next() override;
 
     void dft(Node *node);
 private:
-    Queue* queue;
+    Queue<Node*>* queue;
 };
 
 

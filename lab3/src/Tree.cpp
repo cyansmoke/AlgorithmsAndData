@@ -1,4 +1,5 @@
 #include "Tree.h"
+
 /**
  * insert new node from root
  * @param node
@@ -78,7 +79,6 @@ void deleteTree(Node *root) {
 }
 
 
-
 void showTrunks(Trunk *p) {
     if (p == nullptr) return;
 
@@ -143,4 +143,8 @@ void Tree::print() {
 
 TreeDftIterator Tree::create_dft_iterator() {
     return TreeDftIterator(root);
+}
+
+TreeBftIterator Tree::create_bft_iterator() {
+    return TreeBftIterator(root);
 }

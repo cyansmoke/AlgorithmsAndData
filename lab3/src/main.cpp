@@ -11,9 +11,21 @@ int main() {
     tree.remove_node(10);
     cout << tree.contains(10) << endl;
     tree.print();
+    tree.insert_node(20);
+    tree.insert_node(18);
+    tree.insert_node(21);
+    tree.print();
     TreeDftIterator iterator = tree.create_dft_iterator();
-    while (iterator.has_next()){
-        cout << iterator.next()<< " ";
+    TreeBftIterator it2 = tree.create_bft_iterator();
+    while (iterator.has_next()) {
+        cout << iterator.next()->get_key() << " ";
     }
+
+    cout << endl;
+
+    while (it2.has_next()) {
+        cout << it2.next()->get_key() << " ";
+    }
+
     return 0;
 }
