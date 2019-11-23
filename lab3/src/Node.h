@@ -5,7 +5,6 @@ class Node {
 private:
     Node *left = 0;
     Node *right = 0;
-    int height = 1;
     int key = 0;
 public:
     /**
@@ -47,16 +46,6 @@ public:
      * @return pointer to right element
      */
     Node *get_right();
-
-    /**
-     * @return height of element
-     */
-    int get_height();
-
-    /**
-     * set_height of element
-     */
-    void set_height(int);
 };
 
 

@@ -2,6 +2,8 @@
 #define LAB3_TREE_H
 
 #include "Node.h"
+#include "iterators/TreeDftIterator.h"
+#include "print/Trunk.h"
 
 class Tree {
 
@@ -32,13 +34,13 @@ public:
     /**
     * check contains element with data
     */
-    //Iterator create_dft_iterator();
+    TreeDftIterator create_dft_iterator();
 
     /**
     * check contains element with data
     * @return true if contains else false
     */
-    //Iterator create_bft_iterator()
+//    Iterator create_bft_iterator();
 
     /**
     * check contains element with data

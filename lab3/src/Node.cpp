@@ -2,22 +2,13 @@
 
 Node::Node(int data) {
     this->set_key(data);
-    this->set_left(NULL);
-    this->set_right(NULL);
-    this->set_height(1);
+    this->set_left(nullptr);
+    this->set_right(nullptr);
 }
 
 Node::~Node() {
-    this->set_left(NULL);
-    this->set_right(NULL);
-}
-
-int Node::get_height(){
-    return this->height;
-}
-
-void Node::set_height(int height){
-    this->height = height;
+    this->set_left(nullptr);
+    this->set_right(nullptr);
 }
 
 int Node::get_key() {
