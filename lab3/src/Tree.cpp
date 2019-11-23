@@ -78,43 +78,20 @@ void deleteTree(Node *root) {
     delete (root);
 }
 
+void printBT(const string& prefix, Node* node, bool isLeft, bool isRoot) {
+    if( node != nullptr ) {
 
-void showTrunks(Trunk *p) {
-    if (p == nullptr) return;
+        if(!isRoot) {
+            cout << prefix;
+            cout << (isLeft ? "|--L " : "`--R ");
+        } else {
+            cout << "   ";
+        }
+        cout << node->get_key() << endl;
 
-    showTrunks(p->prev);
-
-    cout << p->str;
-}
-
-void printTree(Node *root, Trunk *prev, bool isLeft) {
-    if (root == nullptr) return;
-
-    string prev_str = "    ";
-    Trunk *trunk = new Trunk(prev, prev_str);
-
-    printTree(root->get_left(), trunk, true);
-
-    if (!prev) {
-        trunk->str = "--";
-    } else if (isLeft) {
-        trunk->str = ".--";
-        prev_str = "   |";
-    } else {
-        trunk->str = "`--";
-        prev->str = prev_str;
+        printBT( prefix + (isLeft ? "|   " : "    "), node->get_left(), true, false);
+        printBT( prefix + (isLeft ? "│   " : "    "), node->get_right(), false, false);
     }
-
-    showTrunks(trunk);
-    cout << root->get_key() << endl;
-
-    if (prev) {
-        prev->str = prev_str;
-    }
-
-    trunk->str = "   |";
-
-    printTree(root->get_right(), trunk, false);
 }
 
 Tree::Tree(int root_data) {
@@ -138,7 +115,7 @@ void Tree::remove_node(int key) {
 }
 
 void Tree::print() {
-    printTree(this->root, nullptr, false);
+    printBT("", root, false, true);
 }
 
 TreeDftIterator Tree::create_dft_iterator() {

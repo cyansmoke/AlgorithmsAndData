@@ -5,8 +5,6 @@
 #include "../Node.h"
 #include <iostream>
 
-using namespace std;
-
 struct Trunk {
     Trunk *prev;
     string str;

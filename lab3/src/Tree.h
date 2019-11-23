@@ -4,13 +4,14 @@
 #include "iterators/TreeDftIterator.h"
 #include "iterators/TreeBftIterator.h"
 #include "Node.h"
-#include "print/Trunk.h"
+#include <iostream>
 
+using namespace std;
 
 class Tree {
 
 private:
-    Node *root = NULL;
+    Node *root = nullptr;
 public:
 
     Tree(int root_data);
