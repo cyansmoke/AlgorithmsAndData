@@ -12,8 +12,8 @@ TreeDftIterator::~TreeDftIterator() {
 
 void TreeDftIterator::dft(Node *start) {
     if (start) {
-        queue->enqueue(start);
         dft(start->get_left());
+        queue->enqueue(start);
         dft(start->get_right());
     }
 }

@@ -125,3 +125,19 @@ TreeDftIterator Tree::create_dft_iterator() {
 TreeBftIterator Tree::create_bft_iterator() {
     return TreeBftIterator(root);
 }
+
+void treeSort(int arr[], int n) {
+    Tree tree(arr[0]);
+    for (int i = n - 1; i > 0; i--) {
+        tree.insert_node(arr[i]);
+    }
+
+    TreeDftIterator iterator = tree.create_dft_iterator();
+
+    int i = 0;
+
+    while (iterator.has_next()) {
+        arr[i] = iterator.next()->get_key();
+        i++;
+    }
+}

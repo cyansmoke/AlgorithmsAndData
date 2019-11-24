@@ -19,7 +19,7 @@ int main() {
 
     long long sum = 0;
 
-    for(int i = 0; i < 10; i++){
+    for (int i = 0; i < 10; i++) {
         randInsert(a, COUNT);
         auto begin = std::chrono::steady_clock::now();
         //insertionSort(a, COUNT);
@@ -27,7 +27,7 @@ int main() {
         auto end = std::chrono::steady_clock::now();
         auto elapsed_ms = std::chrono::duration_cast<std::chrono::milliseconds>(end - begin);
         cout << elapsed_ms.count() << " ";
-        sum+=elapsed_ms.count();
+        sum += elapsed_ms.count();
     }
 
     cout << "Average time: " << sum / 10;

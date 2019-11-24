@@ -29,7 +29,7 @@ TEST(Tree_test, bft) {
 
     try {
         iterator.next();
-    } catch (const char* msg){
+    } catch (const char *msg) {
         EXPECT_EQ(msg, "Hasn't next element");
     }
 
@@ -49,7 +49,17 @@ TEST(Tree_test, dft) {
 
     try {
         iterator.next();
-    } catch (const char* msg){
+    } catch (const char *msg) {
         EXPECT_EQ(msg, "Hasn't next element");
+    }
+}
+
+TEST(Tree_test, treeSort){
+    int arr[] = {3, 29, 28, 11, 1, 2, 257, 335, 3666, 4};
+    int sortedArr[] = {1, 2, 3, 4, 11, 28, 29, 257, 335, 3666};
+    int n = sizeof(arr) / sizeof(arr[0]);
+    treeSort(arr, n);
+    for (int i = 0; i < n; i++) {
+        EXPECT_EQ(arr[i], sortedArr[i]);
     }
 }
