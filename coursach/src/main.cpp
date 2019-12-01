@@ -1,38 +1,34 @@
 #include <iostream>
-
-int min(int a, int b) {
-    return a >= b ? b : a;
-}
-
-int max(int a, int b) {
-    return a >= b ? a : b;
-}
-
-void find() {
-    int b_i[] = {1, 3, 4, 5, 6, 20};
-    int w_i[] = {10, 12, 3, 2, 1, 4};
-    int p_i[] = {3, 1, 4, 55, 90, 3};
-    const int w = 13;
-    const int n = 6;
-    int back[n + 1][w];
-    for (int i = 0; i < w; i++) {
-        back[0][i] = 0;
-    }
-    for (int i = 1; i < n + 1; i++) {
-        for (int c = 1; c < w + 1; c++) {
-            back[i][c] = back[i - 1][c];
-            for (int l = min(b_i[i], c / w_i[i]); l > 1; l--) {
-                back[i][c] = max(back[i][c], back[i - 1][c - l * w_i[i]] + p_i[i] * l);
-            }
-        }
-    }
-
-    std::cout << back[n][w - 1];
-}
+#include "backpack.h"
 
 int main() {
     std::cout << "Hello, World!" << std::endl;
-    find();
+    Item items_list[] = {
+            {"map",                    9,   150, 1},
+            {"compass",                13,  35,  1},
+            {"water",                  153, 200, 2},
+            {"sandwich",               50,  60,  2},
+            {"glucose",                15,  60,  2},
+            {"tin",                    68,  45,  3},
+            {"banana",                 27,  60,  3},
+            {"apple",                  39,  40,  3},
+            {"cheese",                 23,  30,  1},
+            {"beer",                   52,  10,  3},
+            {"suntan cream",           11,  70,  1},
+            {"camera",                 32,  30,  1},
+            {"T-shirt",                24,  15,  2},
+            {"trousers",               48,  10,  2},
+            {"umbrella",               73,  40,  1},
+            {"waterproof trousers",    42,  70,  1},
+            {"waterproof overclothes", 43,  75,  1},
+            {"note-case",              22,  80,  1},
+            {"sunglasses",             7,   20,  1},
+            {"towel",                  18,  12,  2},
+            {"socks",                  4,   50,  1},
+            {"book",                   30,  10,  2},
+    };
+
+    Backpack *back = Backpack::collect_backpack(items_list, 400);
+    back->print_result(items_list);
     return 0;
 }
-
