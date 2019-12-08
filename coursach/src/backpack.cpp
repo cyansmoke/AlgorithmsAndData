@@ -1,8 +1,11 @@
 #include "backpack.h"
 #include <iostream>
 
-Backpack *Backpack::collect_backpack(Item *list_of_items, int max_weight) {
-    auto *back = new Backpack();
+Backpack Backpack::collect_backpack(Item *list_of_items, int max_weight) {
+    if (max_weight <= 0) {
+        throw "Wrong max weight";
+    }
+    auto back = Backpack();
     int i, j, k, valuable, mm[(ITEM_COUNT + 1) * (max_weight + 1)], *m[(ITEM_COUNT + 1)];
     m[0] = mm;
     for (i = 1; i <= ITEM_COUNT; i++) {
@@ -24,7 +27,7 @@ Backpack *Backpack::collect_backpack(Item *list_of_items, int max_weight) {
     for (i = ITEM_COUNT, j = max_weight; i > 0; i--) {
         int val = m[i][j];
         for (k = 0; val != m[i - 1][j] + k * list_of_items[i - 1].get_value(); k++) {
-            back->items_result_map[i - 1]++;
+            back.items_result_map[i - 1]++;
             j -= list_of_items[i - 1].get_weight();
         }
     }
@@ -46,4 +49,8 @@ void Backpack::print_result(Item raw_items[]) {
         }
     }
     cout << "Result weight: " << result_weight;
+}
+
+int *Backpack::get_items_result_map() {
+    return items_result_map;
 }

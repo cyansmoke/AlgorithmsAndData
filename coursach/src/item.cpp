@@ -1,6 +1,9 @@
 #include "item.h"
 
 Item::Item(string name, int weight, int value, int count) {
+    if (name == "" || weight <= 0 || value <= 0 || count <= 0) {
+        throw "Wrong item data";
+    }
     this->name = name;
     this->value = value;
     this->weight = weight;
