@@ -1,12 +1,23 @@
 #include "backpack.h"
 #include <iostream>
 
-Backpack Backpack::collect_backpack(Item *list_of_items, int max_weight) {
+Backpack::Backpack(Item *list_of_items, int max_weight) {
     if (max_weight <= 0) {
         throw "Wrong max weight";
     }
-    auto back = Backpack();
-    int i, j, k, valuable, mm[(ITEM_COUNT + 1) * (max_weight + 1)], *m[(ITEM_COUNT + 1)];
+
+    for (int &i : items_result_map) {
+        i = 0;
+    }
+
+    int i, j, k, valuable, *mm, **m;
+
+    mm = new int[(ITEM_COUNT + 1) * (max_weight + 1)];
+    for (i = 0; i < (ITEM_COUNT + 1) * (max_weight + 1); i++) {
+        mm[i] = 0;
+    }
+
+    m = new int *[ITEM_COUNT + 1];
     m[0] = mm;
     for (i = 1; i <= ITEM_COUNT; i++) {
         m[i] = &mm[i * (max_weight + 1)];
@@ -27,15 +38,11 @@ Backpack Backpack::collect_backpack(Item *list_of_items, int max_weight) {
     for (i = ITEM_COUNT, j = max_weight; i > 0; i--) {
         int val = m[i][j];
         for (k = 0; val != m[i - 1][j] + k * list_of_items[i - 1].get_value(); k++) {
-            back.items_result_map[i - 1]++;
+            this->items_result_map[i - 1]++;
             j -= list_of_items[i - 1].get_weight();
         }
     }
-
-    return back;
 }
-
-using namespace std;
 
 void Backpack::print_result(Item raw_items[]) {
     int result_weight = 0;

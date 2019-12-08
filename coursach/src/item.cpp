@@ -5,8 +5,8 @@ Item::Item(string name, int weight, int value, int count) {
         throw "Wrong item data";
     }
     this->name = name;
-    this->value = value;
     this->weight = weight;
+    this->value = value;
     this->count = count;
 }
 

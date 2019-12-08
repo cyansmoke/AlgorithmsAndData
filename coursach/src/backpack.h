@@ -8,7 +8,7 @@ class Backpack {
 private:
     int items_result_map[ITEM_COUNT];
 public:
-    static Backpack collect_backpack(Item[], int);
+    Backpack(Item*, int);
 
     void print_result(Item[]);
 
