@@ -1,88 +1,22 @@
-#pragma once
+#ifndef ALGORITHMS_LIST_H
+#define ALGORITHMS_LIST_H
 
-#include "Node.h"
-
+template<class T>
 class List {
+    struct Node {
+        T data;
+        Node *next;
+    };
+    Node *last;
+    Node *head;
 public:
     List();
 
-    ~List();
+    void insert(T value);
 
-    /**
-     * insert element with @param data into back of list
-     */
-    void push_back(int data);
-
-    /**
-     * insert element with @param data into front of list
-     */
-    void push_front(int data);
-
-    /**
-     * delete last element of list
-     */
-    void pop_back();
-
-    /**
-     * delete first element of list
-     */
-    void pop_front();
-
-    /**
-     * insert element at @param position with @param data
-     */
-    void insert(int data, int position);
-
-    /**
-     * get element at @param position
-     */
-    int at(int position);
-
-    /**
-     * delete element at @param position
-     */
-    void remove(int position);
-
-    /**
-     * get size of list
-     * @return size_t
-     */
-    size_t get_size();
-
-    /**
-     * print list in console with divider
-     */
-    void print_to_console();
-
-    /**
-     * delete all list data
-     */
     void clear();
 
-    /**
-     * set data of element at @param position to @param data
-     */
-    void set(int position, int data);
-
-    /**
-     * check is list empty
-     * @return bool
-     */
-    bool isEmpty();
-
-    /**
-     * insert list in another list;
-     * @return bool
-     */
-    void push_front(List list);
-
-private:
-    int size = 0;
-    Node *head = nullptr;
-    Node *tail = nullptr;
-
-    /**
-     * insert first element with @param data
-     */
-    void add_first(int data);
+    void delete_last();
 };
+
+#endif //ALGORITHMS_LIST_H

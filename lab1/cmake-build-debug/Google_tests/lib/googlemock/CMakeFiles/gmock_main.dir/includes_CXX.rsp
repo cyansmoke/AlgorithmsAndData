@@ -1,0 +1,1 @@
+-isystem D:/leti/AAD/lab3/Google_tests/lib/googlemock/include -isystem D:/leti/AAD/lab3/Google_tests/lib/googlemock -isystem D:/leti/AAD/lab3/Google_tests/lib/googletest/include -isystem D:/leti/AAD/lab3/Google_tests/lib/googletest 

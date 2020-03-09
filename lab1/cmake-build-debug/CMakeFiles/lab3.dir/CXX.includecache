@@ -1,0 +1,40 @@
+#IncludeRegexLine: ^[ 	]*[#%][ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+D:/leti/AAD/lab3/src/List.cpp
+List.h
+D:/leti/AAD/lab3/src/List.h
+
+D:/leti/AAD/lab3/src/List.h
+
+D:/leti/AAD/lab3/src/main.cpp
+string
+-
+iostream
+-
+map.h
+D:/leti/AAD/lab3/src/map.h
+map.cpp
+D:/leti/AAD/lab3/src/map.cpp
+
+D:/leti/AAD/lab3/src/map.cpp
+map.h
+D:/leti/AAD/lab3/src/map.h
+List.h
+D:/leti/AAD/lab3/src/List.h
+List.cpp
+D:/leti/AAD/lab3/src/List.cpp
+iostream
+-
+
+D:/leti/AAD/lab3/src/map.h
+List.h
+D:/leti/AAD/lab3/src/List.h
+string
+-
+

@@ -1,27 +1,16 @@
+#include <string>
 #include <iostream>
-#include "Node.cpp"
-#include "List.cpp"
+#include "map.h"
+#include "map.cpp"
 
 using namespace std;
 
 int main() {
-    List list1;
-    list1.push_back(4);
-    list1.push_back(5);
-    list1.push_back(6);
-
-    List list2;
-    list2.push_front(3);
-    list2.push_front(2);
-    list2.push_front(1);
-
-    list1.push_front(list2);
-
-    for (int i = list1.get_size(); i > 0; i--) {
-        cout << list1.at(i - 1);
-    }
-
-    list1.print_to_console();
-
-    return 0;
+    Map<int, string> map = Map<int, string>();
+    map.insert(2, "aa");
+    map.insert(10, "sss");
+    map.insert(228, "ooo");
+    map.insert(-1, "kkkkk");
+    map.insert(1, "kkkkkqq");
+    map.print();
 }
