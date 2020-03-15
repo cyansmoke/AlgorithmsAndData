@@ -1,5 +1,4 @@
 #include <string>
-#include <iostream>
 #include "map.h"
 #include "map.cpp"
 
@@ -12,5 +11,4 @@ int main() {
     map.insert(228, "ooo");
     map.insert(-1, "kkkkk");
     map.insert(1, "kkkkkqq");
-    map.print();
 }
