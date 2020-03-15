@@ -16,7 +16,7 @@ private:
         int color;
     };
     Node *root;
-    Node *temp;
+    Node *NIL;
 public:
     void left_rotate(Node *elem);
 

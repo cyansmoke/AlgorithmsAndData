@@ -5,13 +5,13 @@
 
 template<class K, class V>
 Map<K, V>::Map() {
-    temp = new Node;
-    temp->parent = nullptr;
-    temp->color = 0;
-    temp->left = nullptr;
-    temp->right = nullptr;
-    root = temp;
-    root->parent = temp;
+    NIL = new Node;
+    NIL->parent = nullptr;
+    NIL->color = 0;
+    NIL->left = nullptr;
+    NIL->right = nullptr;
+    root = NIL;
+    root->parent = NIL;
 }
 
 template<class K, class V>
@@ -19,9 +19,9 @@ void Map<K, V>::insert(K key, V value) {
     Node *elem = new Node;
     elem->key = key;
     elem->value = value;
-    Node *y = temp;
+    Node *y = NIL;
     Node *x = root;
-    while (x != temp) {
+    while (x != NIL) {
         y = x;
         if (elem->key < x->key) {
             x = x->left;
@@ -30,15 +30,15 @@ void Map<K, V>::insert(K key, V value) {
         }
     }
     elem->parent = y;
-    if (y == temp) {
+    if (y == NIL) {
         root = elem;
     } else if (elem->key < y->key) {
         y->left = elem;
     } else {
         y->right = elem;
     }
-    elem->left = temp;
-    elem->right = temp;
+    elem->left = NIL;
+    elem->right = NIL;
     elem->color = 1;
     insertion_fix(elem);
 }
@@ -47,11 +47,11 @@ template<class K, class V>
 void Map<K, V>::left_rotate(Node *elem) {
     Node *y = elem->right;
     elem->right = y->left;
-    if (y->left != temp) {
+    if (y->left != NIL) {
         y->left->parent = elem;
     }
     y->parent = elem->parent;
-    if (elem->parent == temp) {
+    if (elem->parent == NIL) {
         root = y;
     } else if (elem == elem->parent->left) {
         elem->parent->left = y;
@@ -66,11 +66,11 @@ template<class K, class V>
 void Map<K, V>::right_rotate(Node *elem) {
     Node *y = elem->left;
     elem->left = y->right;
-    if (y->right != temp) {
+    if (y->right != NIL) {
         y->right->parent = elem;
     }
     y->parent = elem->parent;
-    if (elem->parent == temp) {
+    if (elem->parent == NIL) {
         root = y;
     } else if (elem == elem->parent->right) {
         elem->parent->right = y;
@@ -125,7 +125,7 @@ void Map<K, V>::insertion_fix(Node *elem) {
 template<class K, class V>
 typename Map<K, V>::Node *Map<K, V>::find(K key) {
     Node *elem = root;
-    while (elem != temp) {
+    while (elem != NIL) {
         if (elem->key == key) {
             break;
         }
@@ -135,7 +135,7 @@ typename Map<K, V>::Node *Map<K, V>::find(K key) {
             elem = elem->right;
         }
     }
-    if (elem != temp) {
+    if (elem != NIL) {
         return elem;
     } else {
         throw "Key does not exist in array";
@@ -144,7 +144,7 @@ typename Map<K, V>::Node *Map<K, V>::find(K key) {
 
 template<class K, class T1>
 void Map<K, T1>::transplant(Node *elem1, Node *elem2) {
-    if (elem1->parent == temp) {
+    if (elem1->parent == NIL) {
         root = elem2;
     } else if (elem1 == elem1->parent->left) {
         elem1->parent->left = elem2;
@@ -156,7 +156,7 @@ void Map<K, T1>::transplant(Node *elem1, Node *elem2) {
 
 template<class T, class T1>
 typename Map<T, T1>::Node *Map<T, T1>::find_minimum(Node *elem) {
-    while (elem->left != temp) {
+    while (elem->left != NIL) {
         elem = elem->left;
     }
     return elem;
@@ -168,10 +168,10 @@ void Map<T, T1>::remove(T key) {
     Node *x = nullptr;
     Node *y = elem;
     int org_color = y->color;
-    if (elem->left == temp) {
+    if (elem->left == NIL) {
         x = elem->right;
         transplant(elem, elem->right);
-    } else if (elem->right == temp) {
+    } else if (elem->right == NIL) {
         x = elem->left;
         transplant(elem, elem->left);
     } else {
@@ -198,7 +198,7 @@ void Map<T, T1>::remove(T key) {
 template<class K, class V>
 void Map<K, V>::deletion_fix(Map::Node *elem) {
     Node *w = nullptr;
-    while (elem != temp && elem->color == 0) {
+    while (elem != NIL && elem->color == 0) {
         if (elem == elem->parent->left) {
             w = elem->parent->right;
             if (w->color == 1) {
@@ -251,23 +251,23 @@ void Map<K, V>::deletion_fix(Map::Node *elem) {
 
 template<class K, class V>
 void Map<K, V>::clear() {
-    while (root != temp) {
+    while (root != NIL) {
         remove(root->key);
     }
-    delete temp;
+    delete NIL;
 }
 
 template<class K, class V>
 Map<K, V>::~Map() {
-    while (root != temp) {
+    while (root != NIL) {
         remove(root->key);
     }
-    delete temp;
+    delete NIL;
 }
 
 template<class K, class V>
 void Map<K, V>::add_all_keys_to_list(List<K> *list, Node *elem) {
-    if (elem != temp) {
+    if (elem != NIL) {
         add_all_keys_to_list(list, elem->left);
         list->insert(elem->key);
         add_all_keys_to_list(list, elem->right);
@@ -277,7 +277,7 @@ void Map<K, V>::add_all_keys_to_list(List<K> *list, Node *elem) {
 
 template<class K, class V>
 void Map<K, V>::add_all_values_to_list(List<V> *list, Node *elem) {
-    if (elem != temp) {
+    if (elem != NIL) {
         add_all_values_to_list(list, elem->left);
         list->insert(elem->value);
         add_all_values_to_list(list, elem->right);
@@ -307,8 +307,8 @@ void Map<T, T1>::printElem(Node *elem, std::string str, std::string mod) {
         std::cout << str + mod << elem->key << "(" << elem->value << ")" << std::endl;
     }
     str += "|  ";
-    if (elem->left != temp) printElem(elem->left, str, "L-");
-    if (elem->right != temp) printElem(elem->right, str, "R-");;
+    if (elem->left != NIL) printElem(elem->left, str, "L-");
+    if (elem->right != NIL) printElem(elem->right, str, "R-");;
 }
 
 template<class K, class V>
