@@ -7,7 +7,6 @@ using namespace std;
 
 class Encoder {
 private:
-    List<bool> encodedString;
     map<char, float, List<bool>> map;
     List<bool> codeList;
     List<pair<char, float>> probabilityList;
@@ -48,6 +47,8 @@ private:
     }
 
 public:
+    List<bool> encodedString;
+
     string inputString;
 
     Encoder() = default;
@@ -60,7 +61,7 @@ public:
         cout << "Encoded string: ";
         encodedString.print();
         cout << '\n';
-        cout << "Count of input chars: " << inputString.length() << " bits" << endl;
+        cout << "Count of input chars: " << inputString.length() << endl;
         cout << "Size of input string: " << inputString.length() * 8 << " bits" << endl;
         cout << "Size of encoded string: " << encodedString.getSize() << " bits" << endl;
         cout << "Compression coef: " << (float) encodedString.getSize() / (inputString.length() * 8) << endl;
@@ -73,10 +74,6 @@ public:
             map.find_value2(probabilityList.getDataAt(i).first).print();
             cout << endl;
         }
-    }
-
-    List<bool> getEncodedString() {
-        return encodedString;
     }
 
     void setStringForShannon(string str) {

@@ -2,6 +2,6 @@
 
 int main() {
     Encoder example;
-    example.setStringForShannon("Ilia");
+    example.setStringForShannon("Success is the ability to go from failure to failure without losing your enthusiasm.");
     example.showInfo();
 }
