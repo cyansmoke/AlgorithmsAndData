@@ -1,13 +1,13 @@
 #include <iostream>
 #include <string>
-#include "support/map.h"
+#include "support/Map.h"
 #include "support/List.h"
 
 using namespace std;
 
 class Encoder {
 private:
-    map<char, float, List<bool>> map;
+    Map<char, float, List<bool>> map;
     List<bool> codeList;
     List<pair<char, float>> probabilityList;
 

@@ -103,7 +103,7 @@ public:
 #pragma region CLASS_MAP
 
 template<typename K, typename V1, class V2>
-class map {
+class Map {
 private:
     Node<K, V1, V2> *root;
 
@@ -392,9 +392,9 @@ private:
     }
 
 public:
-    map() : root(nullptr) {}
+    Map() : root(nullptr) {}
 
-    ~map() {
+    ~Map() {
         delSubTree(root);
     }
 
@@ -410,7 +410,7 @@ public:
                 if (p->getKey() < temp->getKey()) {
                     p = p->getRight();
                 } else if (p->getKey() == temp->getKey()) {
-                    throw "This element is already in the map";
+                    throw "This element is already in the Map";
                 } else {
                     p = p->getLeft();
                 }
@@ -469,7 +469,7 @@ public:
             else
                 temp = temp->getLeft();
         }
-        if (!temp) throw "This element isn't in the map";
+        if (!temp) throw "This element isn't in the Map";
         return temp->getValue1();
     }
 
@@ -482,7 +482,7 @@ public:
             else
                 temp = temp->getLeft();
         }
-        if (!temp) throw "This element isn't in the map";
+        if (!temp) throw "This element isn't in the Map";
         return temp->getValue2();
     }
 
