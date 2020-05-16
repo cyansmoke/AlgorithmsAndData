@@ -1,5 +1,4 @@
 #include "map.h"
-#include "List.h"
 #include "List.cpp"
 #include <iostream>
 
@@ -299,12 +298,13 @@ List<V> *Map<K, V>::get_values() {
     return list;
 }
 
-template<class T, class T1>
-void Map<T, T1>::printElem(Node *elem, std::string str, std::string mod) {
+template<class K, class V>
+void Map<K, V>::printElem(Node *elem, std::string str, std::string mod) {
     if (elem == root) {
         std::cout << +"+-" << elem->key << "(" << elem->value << ")" << std::endl;
     } else {
-        std::cout << str + mod << elem->key << "(" << elem->value << ")" << std::endl;
+        std::string color = elem->color == 0 ? "-B" : "-R";
+        std::cout << str + mod << elem->key << "(" << elem->value << ")" << color << std::endl;
     }
     str += "|  ";
     if (elem->left != NIL) printElem(elem->left, str, "L-");

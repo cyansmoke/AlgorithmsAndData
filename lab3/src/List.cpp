@@ -4,6 +4,7 @@ template<class K>
 List<K>::List() {
     head = nullptr;
     last = nullptr;
+    size = 0;
 }
 
 template<class K>
@@ -18,6 +19,7 @@ void List<K>::insert(K value) {
         last->next = elem;
         last = elem;
     }
+    size++;
 }
 
 template<class K>
@@ -43,6 +45,7 @@ void List<K>::clear() {
             remove_last();
         }
     }
+    size = 0;
 }
 
 template<class K>
@@ -63,5 +66,24 @@ void List<K>::remove_last() {
         delete last;
         last = tmp_ptr;
     }
+    size++;
 }
 
+template<class K>
+K List<K>::at(int k) {
+    if (head != nullptr && k >= 0 && k <= size - 1) {
+        if (k == 0) {
+            return head->data;
+        } else if (k == size - 1) {
+            return last->data;
+        } else {
+            Node *current = head;
+            for (int i = 0; i < k; i++) {
+                current = current->next;
+            }
+            return current->data;
+        }
+    } else {
+        throw "out_of_range";
+    }
+}
