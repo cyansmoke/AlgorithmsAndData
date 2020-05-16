@@ -1,0 +1,5 @@
+Saint-Petersburg;Nalchik;10;23;
+Saint-Petersburg;Moscow;5;4;
+Moscow;Nalchik;9;7;
+Barselona;Moscow;25;N/A;
+Barselona;Saint-Petesburg;N/A;2;
