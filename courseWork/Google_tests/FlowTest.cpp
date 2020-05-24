@@ -3,7 +3,7 @@
 #include "../src/Flow.cpp"
 
 TEST(FlowTest, algorythmTest) {
-    ASSERT_EQ(Flow("../data/algorythm_test.txt").maximalFlow(), 19);
+    ASSERT_EQ(Flow("../data/algorythm_test.txt").maximalFlow(), 17);
 }
 
 TEST(FlowTest2, missingSymbolTest) {
